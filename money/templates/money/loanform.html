@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>loanform</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'money/styles.css' %}" rel="stylesheet">
+</head>
+ 
+
+
+
+{% if form1 %}
+<body id="bg" style="background-image: url('{% static "money/girl.jpg"%}')"; style="background-image: url('{% static "money/girl.jpg"%}')";>
+<div class="fdivt">Education Loan Form</div>
+{% else %}
+<body id="bg" style="background-image: url('{% static "money/home.jpg"%}')"; >
+<div class="fdivt">Home loan Form</div>
+{% endif %}
+<div class="lo-form">
+   {% if form1 %}
+            <form method="post" action="balance">
+                {% csrf_token %}
+                {{ form1.as_p }}
+                <button type="submit">Send Application</button>
+            </form>
+        {% endif %}
+
+        {% if form2 %}
+            <form method="post" action="balance">
+                {% csrf_token %}
+                {{ form2.as_p }}
+                <button type="submit">Send Application</button>
+            </form>
+        {% endif %}
+</div>
+    
+     
+
+    <script>
+        function showForm(formNumber) {
+            document.getElementById('form1').style.display = formNumber === 1 ? 'block' : 'none';
+            document.getElementById('form2').style.display = formNumber === 2 ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

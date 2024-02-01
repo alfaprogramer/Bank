@@ -1,0 +1,37 @@
+{% extends "money/index.html" %}
+{% block body %}
+<div></div>
+<div class="history" >
+
+   <h2>Transaction History</h2>
+   <ul>
+        {% for transaction in transactions %}
+        {% if transaction.sender == user %}
+            <li>You sent ₹{{ transaction.amount }} to {{ transaction.receiver.username }} on {{ transaction.timestamp }}</li>
+        {% else %}
+            <li>You received ₹{{ transaction.amount }} from {{ transaction.sender.username }} on {{ transaction.timestamp }}</li>
+        {% endif %}
+         {% endfor %}
+    </ul>
+</div>
+<button id="notification-button" onclick="toggleOffCanvas()">
+    Notification
+    <span id="notification-badge" class="badge badge-danger">{{ unread_message_count }}</span>
+</button>
+
+
+
+      
+<div id="offCanvas">
+    <!-- Off-canvas content -->
+    <div id="offCanvasContent">
+       
+        
+    </div>
+</div>
+
+         <div id="overlay"></div>
+
+
+
+{% endblock %}

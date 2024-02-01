@@ -1,0 +1,305 @@
+#bg{
+    background-size: 1800px 900px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+}
+
+.formdiv{
+    text-align: center;
+    margin-top: 70px;
+    background-color: rgb(0,0,0,0.5);
+    padding-top: 30px;
+    padding-bottom: 30px;
+   
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.formdivR{
+    text-align: center;
+    margin-top: 10px;
+    background-color: rgb(0,0,0,0.5);
+    padding-top: 30px;
+    padding-bottom: 10px;
+    height: 900px;
+   
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.inputdiv{
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 50px;
+    
+   
+}
+
+.titlediv{
+    padding-top: 60px;
+    text-align: center;
+   font-size: 60px;
+   font-weight: bold;
+}
+
+
+
+
+
+
+
+.inputdivR {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0; /* Adjust padding for better spacing */
+}
+
+.inputdivR label {
+    color: white;
+    margin-bottom: 3px; /* Adjust margin for better spacing */
+    font-size: 14px;
+    align-self: flex-start; /* Align labels to the left */
+}
+
+.inputdivR input,
+.inputdivR textarea,
+.inputdivR select {
+    width: 50%;
+    padding: 6px;
+    margin: 3px 0; /* Adjust margin for better spacing */
+    box-sizing: content-box;
+    font-size: 14px; /* Adjust font size */
+}
+
+.titledivR {
+    padding-top: 40px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+
+
+
+
+.indexdiv{
+    background-color: rgb(0,0,0,0.7);
+    width: 900px;
+    height: 138px;
+    float: left;
+    
+}
+
+.indextitle{
+   color: white;
+   padding-left: 17px;
+}
+
+.indexsign{
+    color: white;
+    padding-left: 17px;
+}
+
+.indeximg{
+    background-color: rgb(0,0,0,0.7);
+    text-align: right;
+    vertical-align: middle;
+    float: right;
+    height: 138px;
+    width: 636px;
+}
+
+
+
+
+
+.blatitle{
+    color:black;
+    font-size: 70px;
+    text-align: center;
+    font-weight: bold;
+    
+}
+
+.bladiv{
+
+ background-color: rgba(0, 0, 0, 0.7);
+ height: 300px;
+ margin-left: 300px;
+ margin-right: 300px;
+}
+
+.amtext{
+    color: white;
+    font-size: 50px;
+    margin-left: 50px ;
+    align-items: center;
+}
+
+
+
+.sendtitle{
+    color:black;
+    font-size: 70px;
+    text-align: center;
+    font-weight: bold;
+}
+.senddiv{
+    background-color: rgb(0,0,0,0.7);
+}
+.sendtext{
+    color: white;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.sendtext3{
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+#loading-overlay {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.loading-spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#success-modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 255, 0, 1);
+    z-index: 9999;
+}
+
+.success-box {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+.history{
+    height: fit-content;
+    margin-top: 30px;
+    width: 100%;
+   display: inline-block;
+    background-color: rgb(0,0,0,0.7);
+   color: white;
+   text-align: center;
+}
+
+
+
+
+
+
+
+#notification-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease-in-out; /* Smooth transition effect */
+}
+
+#notification-button:hover {
+    background-color: green;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}
+
+
+
+#offCanvas {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Off-canvas initially hidden to the right */
+    width: 250px;
+    height: 100%;
+    background-color: #f8f9fa;
+    transition: right 0.3s ease-in-out; /* Smooth transition effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 2; /* Ensure it appears above the overlay */
+}
+
+
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    display: none;
+    z-index: 1; /* Set it to a value lower than the off-canvas */
+}
+
+
+
+
+
+

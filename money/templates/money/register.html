@@ -1,0 +1,68 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<title>{% block title %} Bank {% endblock %} </title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="{% static 'money/styles.css' %}" rel="stylesheet">
+<head>
+<body id="bg" style="background-image: url('{% static "money/bg.jpg"%}')";>
+<div class="titledivR"> Register for  </div>
+
+<div class="formdivR">
+<form action="{% url 'register'%}" method = "POST" enctype="multipart/form-data">
+{% csrf_token%}
+    <div class="inputdivR">
+        <label for="name" style="color:white">Name :</label>
+        <input autofocus  id="name" style="font-size:14pt" type="text" name="name"placeholder="Name" >
+    </div>
+
+    <div class="inputdivR">
+        <label for="email" style="color:white">Email :</label>
+        <input type="text" name="email" placeholder="Email" id="email">
+    </div>
+
+    <div class="inputdivR">
+        <label for="date" style="color:white">Date of birth :</label>
+        <input type="date" id="date" name="date">
+    </div>
+
+    <div class="inputdivR">
+        <label for="mobile" style="color:white">Mobile no.</label>
+        <input type="tel" id="mobile" name="mobile" placeholder="12345-67890" pattern="[0-9]{5}-[0-9]{5}">
+    </div>
+
+    <div class="inputdivR">
+        <label for="address" style="color:white">Address :</label>
+        <textarea  id ="address"  name="address" placeholder="Address"></textarea>
+    </div>
+
+    <div class="inputdivR">
+        <label for"image" style="color: white">Image :</label>
+        <input type="file" name="image" alt="Submit" width="48" height="48">
+    <div>
+
+    <div class="inputdivR">
+        <label for="tcode" style="color:white">Tcode :</label>
+        <input type="text" id="tcode" name="tcode" placeholder=" tcode ">
+    </div>
+     
+    <div class="inputdivR">
+        <label for="password" style="color:white">Password :</label>
+        <input  style="font-size:14pt" id="label" type="text" name="password" placeholder="Password">
+    </div >
+
+    <div class="inputdivR">
+        <label for="cpassword" style="color:white">Confirm Password :</label>
+        <input  style="font-size:14pt" id="cpassword" type="text" name="cpassword" placeholder="Password">
+    </div >
+    
+    <input type="submit" value="Register">
+
+ </form>
+ 
+</div>
+
+</body>
+
+</html>

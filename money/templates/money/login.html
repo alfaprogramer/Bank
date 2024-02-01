@@ -1,0 +1,43 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<title>{% block title %} Bank {% endblock %} </title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="{% static 'money/styles.css' %}" rel="stylesheet">
+<head>
+<body id="bg" style="background-image: url('{% static "money/bg.jpg"%}')";>
+<div class="titlediv"> Gautam Bank </div>
+<div class="formdiv">
+<form action="{% url 'login'%} " method = "POST">
+{% csrf_token%}
+    <div class="inputdiv">
+    <input autofocus style="font-size:14pt" type="text" name="name" placeholder="Name" >
+    </div>
+    <div class="inputdiv">
+    <input  style="font-size:14pt" id="checkbox" type="password" name="password" placeholder="Password">
+    </div >
+    <div class="inputdiv">
+    <input type="checkbox" onclick="showpass()"> <text style="color: white"> Show Password</text>
+    </div>
+    <input type="submit" value="Login">
+
+</form>
+
+<text style="color: white" > Don't have an account?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text><a href="{% url 'register' %}">Register here.</a>
+
+
+</div>
+<script>
+function showpass(){
+    var x =document.getElementById("checkbox");
+    if(x.type === "password"){
+        x.type = "text";
+    }else{
+        x.type="password";
+    }
+}
+</script>
+</body>
+
+</html>

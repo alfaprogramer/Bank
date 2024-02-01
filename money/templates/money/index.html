@@ -1,0 +1,93 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Bank{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'money/styles.css' %}" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    </head>
+    <body id="bg" style="background-image: url('{% static "money/bg.jpg"%}')"; style="background-image: url('{% static "money/bg.jpg"%}')";>
+    <div class="col-md-6 indexdiv">
+        <h1 class="indextitle">Gautam Bank</h1>
+        <div class="indexsign">
+            {% if user.is_authenticated %}
+                Signed in as <strong>{{ user.username }}</strong>.
+            {% else %}
+                Not signed in.
+            {% endif %}
+        </div>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'balance' %}">Balance</a>
+            </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'send' %}">Send Money</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link history-link" href="{% url 'history' %}">Transaction History</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'loan' %}">Apply for Loan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Logout</a>
+                </li>
+            
+        </ul>
+        
+        <hr>
+       
+        </div>
+         <div class="col-md-6 indeximg">
+             {% if user_profile and user_profile.image %}
+               <img height="138" width="152" src="{{ user_profile.image.url }}" alt="User Profile Image">
+             {% else %}
+               <img height="138" width="152" src="{% static 'money/pic.jpg' %}" alt="Default Image">
+             {% endif %}
+       </div>
+      
+
+      
+
+
+
+
+<script>
+   
+
+     function toggleOffCanvas() {
+        const offCanvas = document.getElementById('offCanvas');
+        const overlay = document.getElementById('overlay');
+        const isVisible = offCanvas.style.right === '0px';
+
+        // Toggle the off-canvas visibility
+        offCanvas.style.right = isVisible ? '-250px' : '0';
+        // Toggle the overlay visibility
+        overlay.style.display = isVisible ? 'none' : 'block';
+    }
+
+    // Add event listener to close off-canvas when clicking outside of it
+    document.addEventListener('click', function (event) {
+        const offCanvas = document.getElementById('offCanvas');
+        const notificationButton = document.getElementById('notification-button');
+        const overlay = document.getElementById('overlay');
+
+        // Check if the click is outside the off-canvas and notification button
+        if (event.target !== offCanvas && event.target !== notificationButton) {
+            // Close the off-canvas
+            offCanvas.style.right = '-250px';
+            // Hide the overlay
+            overlay.style.display = 'none';
+        }
+    });
+
+</script>
+        
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

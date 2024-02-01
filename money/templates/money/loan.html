@@ -1,0 +1,65 @@
+{% extends "money/index.html"%}
+{% block body %}
+{% load static %}
+
+
+
+<div class="loandiv">
+<div class="div1">
+<div class="div2" id="carousel">
+<image id="slide1" src="{% static 'money/home.jpg' %}" alt="image" >
+<image id="slide2" src="{% static 'money/girl.jpg' %}" alt="image" >
+
+</div>
+<div class="slider-nav">
+<a href="#slide1"></a>
+<a href="#slide2"></a>
+</div>
+</div>
+</div>
+<script>
+        var carousel = document.getElementById('carousel');
+        var slideWidth = carousel.clientWidth;
+
+ // Function to handle image clicks
+    function handleImageClick(index) {
+        if (index === 1) {
+            // Redirect to the first form page
+            window.location.href = '{% url "formHome" %}';  // Use the correct URL name
+        } else if (index === 2) {
+            // Redirect to the second form page
+            window.location.href = '{% url "formEdu" %}';  // Use the correct URL name
+        }
+    }
+
+    // Add click event listeners to the images
+    var images = carousel.querySelectorAll('img');
+    images.forEach(function (image, index) {
+        image.addEventListener('click', function () {
+            handleImageClick(index + 1); // Index starts from 0
+        });
+    });
+        
+        function nextSlide() {
+            var currentScroll = carousel.scrollLeft;
+            var maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+            if (currentScroll + slideWidth >= maxScroll) {
+                // If at the last image, scroll to the beginning
+                carousel.scrollTo({
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                // Otherwise, move to the next slide
+                carousel.scrollTo({
+                    left: currentScroll + slideWidth,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        setInterval(nextSlide, 5000);
+    </script>
+
+{% endblock%}

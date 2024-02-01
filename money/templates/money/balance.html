@@ -1,0 +1,85 @@
+{% extends "money/index.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="blatitle">
+    Balance
+</div>
+
+<div class="bladiv">
+<div class="amtext">
+Available Amount : ₹ {{ user.bankaccount.balance}}
+</div>
+</div>
+
+
+<button id="notification-button" onclick="toggleOffCanvas()">
+    Notification
+    <span id="notification-badge" class="badge badge-danger">{{ unread_notifications|length }}</span>
+  </button>
+
+  <div id="offCanvas">
+    <!-- Off-canvas content -->
+    <div id="offCanvasContent">
+      <ul id="notification-list">
+        {% for notification in unread_notifications %}
+          <li>{{ notification.message }} <button class="mark-as-read" data-notification-id="{{ notification.id }}">Mark as Read</button></li>
+        {% endfor %}
+      </ul>
+      {% if unread_notifications %}
+        <button id="mark-all-as-read">Mark All as Read</button>
+      {% else %}
+        <p>No notifications.</p>
+      {% endif %}
+    </div>
+  </div>
+  <div id="overlay"></div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+ $(document).ready(function () {
+        // AJAX to mark a notification as read
+        $(".mark-as-read").click(function () {
+            var notificationId = $(this).data("notification-id");
+
+            $.ajax({
+                type: "POST",
+                url: "/mark_notification_as_read/",
+                data: { notification_id: notificationId },
+                success: function () {
+                    // Reload the page or update the UI as needed
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error marking notification as read:", error);
+                },
+            });
+        });
+
+        // AJAX to mark all notifications as read
+        $("#mark-all-as-read").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/mark_all_notifications_as_read/",
+                success: function () {
+                    // Reload the page or update the UI as needed
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error marking all notifications as read:", error);
+                },
+            });
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
